@@ -1,13 +1,20 @@
 pipeline {
-	agent { docker { image 'maven:3.6.3'} }
+	agent {
+    label 'docker' 
+  }
 	stages {
-		stage("Build") {
-			steps {
-				sh 'mvn --version'
-				echo "Build"
-				
-			}
-		}
+		stage('Build') {
+      agent {
+        docker {
+          // Set both label and image
+          label 'docker'
+          image 'maven:3-alpine'
+        }
+      }
+	  steps {
+        // Steps run in maven:3-alpine docker container on docker slave
+        sh 'mvn --version'
+      }
 		stage("Test") {
 			steps {
 				
