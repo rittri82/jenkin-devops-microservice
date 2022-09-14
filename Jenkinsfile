@@ -1,14 +1,14 @@
-pipeline {
-    agent {
-        docker { image 'node:16.13.1-alpine' }
+// scripted pipeline
+
+node {
+    stage('Build'){
+        echo "Build"
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
+    stage('Test'){
+        echo "Test"
+    }
+    stage('Integration Test'){
+        echo "Integration Test"
     }
 }
-
 
