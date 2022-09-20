@@ -9,6 +9,7 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 echo "Build"
+                echo "BUILD_TAG - $env.BUILD_TAG"
             }
         }
         stage('Test') {
